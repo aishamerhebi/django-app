@@ -12,6 +12,7 @@ blocks:
           commands:
             - echo $DOCKER_USERNAME
             - echo $DOCKER_PASSWORD
+            - docker logout
             - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin
             - 'docker pull $DOCKER_USERNAME/django-app:latest || true'
             - 'docker build --cache-from=$DOCKER_USERNAME/django-app:latest -t $DOCKER_USERNAME/django-app:latest .'
