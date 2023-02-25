@@ -8,7 +8,7 @@ blocks:
   - name: Build
     task:
       jobs:
-        - name: 'Job #1'
+        - name: Pip
           commands:
             - sem-version python 3.10
             - checkout
@@ -16,3 +16,20 @@ blocks:
             - cache restore
             - pip install --cache-dir .pip_cache -r requirements.txt
             - cache store
+  - name: Test
+    task:
+      jobs:
+        - name: test
+          commands:
+            - cd martor_demo
+            - python3 manage.py makemigrations
+            - python3 manage.py migrate
+            - python3 manage.py test
+        - name: checklist
+          commands:
+            - cd martor_demo
+            - python3 manage.py check --deploy
+        - name: style
+          commands:
+            - cd martor_demo
+            - python3 manage.py check --deploy
