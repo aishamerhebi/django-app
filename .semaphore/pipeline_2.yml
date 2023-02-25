@@ -10,8 +10,10 @@ blocks:
       jobs:
         - name: build
           commands:
-            - 'echo "${DOCKER_USERNAME}"'
-            - 'echo "${DOCKER_PASSWORD}"'
+            - echo "aishamerhebi+1@gmail.com"
+            - echo "aisham123"
+            - echo $DOCKER_USERNAME
+            - echo $DOCKER_PASSWORD
             - 'docker login -u "${DOCKER_USERNAME}" "${DOCKER_PASSWORD}"'
             - 'docker pull $DOCKER_USERNAME/django-app:latest || true'
             - 'docker build --cache-from=$DOCKER_USERNAME/django-app:latest -t $DOCKER_USERNAME/django-app:latest .'
@@ -29,3 +31,5 @@ blocks:
           - 'python manage.py makemigrations '
           - python manage.py migrate
           - cd ..
+      secrets:
+        - name: dockerhub
