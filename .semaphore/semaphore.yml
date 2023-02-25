@@ -32,3 +32,12 @@ blocks:
             - cd martor_demo
             - python3 manage.py makemigrations
             - python3 manage.py migrate
+            - python3 manage.py test
+        - name: checklist
+          commands:
+            - cd martor_demo
+            - python3 manage.py check --deploy
+        - name: style
+          commands:
+            - pip install flake8
+            - flake8 martor_demo/ --max-line-length=127
