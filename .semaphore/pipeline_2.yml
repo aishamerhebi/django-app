@@ -10,8 +10,6 @@ blocks:
       jobs:
         - name: build
           commands:
-            - echo "aishamerhebi+1@gmail.com"
-            - echo "aisham123"
             - echo $DOCKER_USERNAME
             - echo $DOCKER_PASSWORD
             - 'docker login -u "${DOCKER_USERNAME}" "${DOCKER_PASSWORD}"'
